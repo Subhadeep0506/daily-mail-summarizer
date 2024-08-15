@@ -2,7 +2,7 @@ import os
 import supabase
 import psycopg2
 
-from typing import Tuple
+from typing import Tuple, List, Dict
 from supabase import create_client, Client
 from ..core.create_sql_query import create_table_query
 
@@ -30,13 +30,13 @@ class SupabaseClient:
     def get_client(self) -> Client:
         return self.supabase
 
-    def create_table(self, table_name: str, config):
+    def create_table(self, table_name: str, fields: Dict[str, str]):
         try:
             cur = self.postgres.cursor()
             cur.execute(
                 create_table_query(
                     table_name=table_name,
-                    columns=config["database"][table_name]["columns"],
+                    columns=fields,
                 )
             )
             self.postgres.commit()
@@ -45,5 +45,33 @@ class SupabaseClient:
         except Exception as e:
             raise Exception(e)
 
-    def add_email(self):
-        pass
+    def add_bulk_data(self, table_name: str, data: List):
+        try:
+            response = self.supabase.table(table_name).insert(data).execute()
+            return response
+        except Exception as exception:
+            return exception
+
+    def create_storage_bucket(self, bucket_name: str):
+        try:
+            res = self.supabase.storage.create_bucket(bucket_name)
+            return res
+        except Exception as e:
+            raise Exception(f"An error occured while creating storage bucket: {e}")
+
+    def upload_files(self, files: List):
+        responses = []
+        for file in files:
+            with open(os.path.join("temp", file), "rb") as f:
+                resp = self.supabase.storage.from_("emails").upload(
+                    file=f,
+                    path=f"/{file}",
+                    file_options={"content-type": "plain/text"},
+                )
+                responses.append(resp)
+
+        return responses
+
+    def list_files(self, bucket_name: str):
+        res = self.supabase.storage.from_(bucket_name).list()
+        return res

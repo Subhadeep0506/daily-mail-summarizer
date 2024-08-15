@@ -1,10 +1,12 @@
 import os.path
+import base64
+import uuid
+
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-import base64
 from datetime import datetime, timedelta
 from ..exceptions.gmail_exceptions import NoMessagesException
 
@@ -15,14 +17,14 @@ class GmailClient:
         try:
             if os.path.exists("token.json"):
                 self.creds = Credentials.from_authorized_user_file(
-                    "token.json", os.getenv("SCOPES")
+                    "token.json", [os.getenv("GMAIL_SCOPE")]
                 )
             if not self.creds or not self.creds.valid:
                 if self.creds and self.creds.expired and self.creds.refresh_token:
                     self.creds.refresh(Request())
                 else:
                     flow = InstalledAppFlow.from_client_secrets_file(
-                        "self.creds.json", os.getenv("SCOPES")
+                        "credentials.json", [os.getenv("GMAIL_SCOPE")]
                     )
                     self.creds = flow.run_local_server(port=8088)
                 # Save the credentials for the next run
@@ -86,13 +88,14 @@ class GmailClient:
                         to_address = header["value"]
                 fetched_messages.append(
                     {
-                        "msg_id": msg_id,
+                        "_id": str(uuid.uuid4()),
+                        "message_id": msg_id,
                         "thread_id": thread_id,
                         "timestamp": date,
                         "labels": labels,
                         "subject": subject,
-                        "from": from_address,
-                        "to": to_address,
+                        "add_from": from_address,
+                        "add_to": to_address,
                         "snippet": msg_snippet,
                         "file_name": f"{msg_id}.txt",
                     }
@@ -105,23 +108,34 @@ class GmailClient:
             # Handle errors from gmail API.
             print(f"An error occurred: {error}")
 
-    def get_message_body(self, msg_payload, message_file_id):
+    def get_message_body(self, msg_payload):
         """Get the body of the message"""
-        if "parts" in msg_payload:
-            for part in msg_payload["parts"]:
-                if part["mimeType"] == "text/plain":
-                    return base64.urlsafe_b64decode(part["body"]["data"]).decode(
-                        "utf-8"
-                    )
-                elif part["mimeType"] == "text/html":
-                    return base64.urlsafe_b64decode(part["body"]["data"]).decode(
-                        "utf-8"
-                    )
-        else:
-            return base64.urlsafe_b64decode(msg_payload["body"]["data"]).decode("utf-8")
+        try:
+            if "parts" in msg_payload:
+                for part in msg_payload["parts"]:
+                    if part["mimeType"] == "text/plain":
+                        return base64.urlsafe_b64decode(part["body"]["data"]).decode(
+                            "utf-8"
+                        )
+                    elif part["mimeType"] == "text/html":
+                        return base64.urlsafe_b64decode(part["body"]["data"]).decode(
+                            "utf-8"
+                        )
+                    else:
+                        print(part["body"])
+                        return None
+            else:
+                return base64.urlsafe_b64decode(msg_payload["body"]["data"]).decode(
+                    "utf-8"
+                )
+        except Exception as e:
+            raise Exception(f"Failed to prcess mail content: {e}")
 
     def save_message_to_file(self, message_content: str, message_file_id: str):
         os.makedirs("temp", exist_ok=True)
-
-        with open(f"{message_file_id}.txt", "w") as file:
-            file.write(message_content)
+        try:
+            if message_content:
+                with open(f"temp/{message_file_id}.txt", "w") as file:
+                    file.write(message_content)
+        except Exception as e:
+            raise Exception(f"Error occured for file {message_file_id}: {e}")
