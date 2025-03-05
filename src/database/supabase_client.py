@@ -1,8 +1,7 @@
 import os
-import supabase
 import psycopg2
 
-from typing import Tuple, List, Dict
+from typing import List, Dict
 from supabase import create_client, Client
 from ..core.create_sql_query import create_table_query
 
