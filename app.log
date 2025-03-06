@@ -19,3 +19,167 @@
 2025-03-07 01:17:40,929 - DailyMailSummarizer - INFO - Token Expired. Refreshing Gmail client from credentials.json
 2025-03-07 01:17:42,162 - DailyMailSummarizer - INFO - Database tables created
 2025-03-07 01:17:42,162 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-03-07 01:24:45,995 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-03-07 01:24:52,544 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-03-07 01:24:52,544 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-03-07 01:24:57,248 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-03-07 01:24:58,394 - DailyMailSummarizer - INFO - Database tables created
+2025-03-07 01:24:58,395 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-03-07 01:25:01,904 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/02/11, End Date: 2025/02/12
+2025-03-07 01:25:37,007 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 67
+2025-03-07 01:25:45,648 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-03-07 01:25:47,698 - DailyMailSummarizer - INFO - Data added to table 'messages'
+2025-03-07 01:26:22,426 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-03-07 01:26:23,626 - DailyMailSummarizer - ERROR - An error occured while adding data to table 'messages': {'code': '23505', 'details': 'Key (id)=(c347257a-05a5-403f-866e-228e12f88c26) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint "messages_pkey"'}
+2025-03-07 01:28:29,709 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-03-07 01:28:31,130 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-03-07 01:28:31,130 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-03-07 01:28:37,694 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-03-07 01:28:38,746 - DailyMailSummarizer - INFO - Database tables created
+2025-03-07 01:28:38,747 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-03-07 01:28:57,650 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/02/11, End Date: 2025/02/12
+2025-03-07 01:29:39,189 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 67
+2025-03-07 01:29:40,884 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-03-07 01:29:45,990 - DailyMailSummarizer - INFO - Data added to table 'messages'
+2025-03-07 01:30:58,867 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/02/11, End Date: 2025/02/12
+2025-03-07 01:31:49,205 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 67
+2025-03-07 01:31:55,489 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-03-07 01:31:57,213 - DailyMailSummarizer - INFO - Data added to table 'messages'
+2025-03-07 01:34:06,215 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-03-07 01:34:08,085 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-03-07 01:34:08,085 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-03-07 01:34:13,557 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-03-07 01:34:14,660 - DailyMailSummarizer - INFO - Database tables created
+2025-03-07 01:34:14,660 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-03-07 01:34:14,670 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/02/11, End Date: 2025/02/12
+2025-03-07 01:35:04,273 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 67
+2025-03-07 01:35:04,284 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-03-07 01:35:05,691 - DailyMailSummarizer - INFO - Data added to table 'messages'
+2025-03-07 01:35:39,254 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/02/11, End Date: 2025/02/12
+2025-03-07 01:36:19,898 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 67
+2025-03-07 01:36:19,907 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-03-07 01:36:20,963 - DailyMailSummarizer - ERROR - An error occured while adding data to table 'messages': {'code': '23505', 'details': 'Key (message_id)=(194f64442511d3c1) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint "messages_pkey"'}
+2025-03-07 01:49:24,285 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5192b47ee84e.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:24,754 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5bf4a52e29d4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:25,840 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f15e47738ba23.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:27,832 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f627cff33adac.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:28,370 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f45f3855ee1e5.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:29,269 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f37e45628304c.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:29,660 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f63c810fd0049.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:30,410 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2507a4a67d84.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:31,585 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f300dca962782.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:31,993 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5be3d485f0dc.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:32,363 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f56a3dfd42c97.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:32,761 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f213850cc36f3.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:33,123 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f546e4df08f17.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:33,846 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4def58e44a0c.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:34,207 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f58ede28349b2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:34,657 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5d9da573651f.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:35,015 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2a9ce78a85e7.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:35,784 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f58b8448ac2f3.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:36,195 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f44f3829852f4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:36,665 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3304b6cc9ee2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:37,349 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5f6463fbeee4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:37,719 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2f867b55f6ac.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:38,098 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f61e9c61b0626.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:38,908 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f15e7a37abb68.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:39,693 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f301f214b06f2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:40,199 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4155c7ac09c8.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:40,797 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f541e151d6d52.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:41,132 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3727136c113e.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:41,452 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4d14ab2afb1d.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:41,854 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f64442511d3c1.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:42,230 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5404665bab60.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:42,608 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f6317aea89dc4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:43,011 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f25df499d395b.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:43,373 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5be90155d837.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:45,334 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f56b4881af040.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:47,482 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f59520a235802.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:47,797 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f60994ef69e84.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:48,245 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f459d8cbd72d3.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:48,579 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4cf32af443f7.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:48,920 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3456f74e0845.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:49,884 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1b897865101b.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:51,481 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5a82dc5d8cd4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:52,492 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f152f20441147.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:52,910 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5494fd349c24.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:53,313 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5f744fe1785a.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:53,719 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4f9f32681704.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:54,080 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f51911c4d7e01.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:54,425 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1960067929c2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:54,895 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1e15f9f880e5.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:55,255 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f145237acd397.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:55,988 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f49d99bb40dc1.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:56,488 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2186b5b77bc5.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:56,839 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3d305bbd0270.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:57,895 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f58bc4ed6c0fc.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:58,842 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5d7e94225bbb.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:59,202 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f59d6a8682390.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:49:59,884 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5ebc6f787ef7.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:00,937 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f36a3bf4ac966.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:01,584 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5c66dafb7658.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:02,114 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5f7f2619d350.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:03,899 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1e5f45d04e3d.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:03,900 - DailyMailSummarizer - INFO - All files uploaded.
+2025-03-07 01:50:08,216 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5192b47ee84e.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:08,694 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5bf4a52e29d4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:09,034 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f15e47738ba23.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:09,336 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f627cff33adac.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:09,797 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f45f3855ee1e5.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:10,162 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f37e45628304c.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:11,231 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f63c810fd0049.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:11,697 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2507a4a67d84.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:12,285 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f300dca962782.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:12,644 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5be3d485f0dc.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:13,138 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f56a3dfd42c97.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:13,484 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f213850cc36f3.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:13,983 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f546e4df08f17.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:14,386 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4def58e44a0c.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:14,774 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f58ede28349b2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:15,195 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5d9da573651f.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:15,511 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2a9ce78a85e7.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:16,603 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f58b8448ac2f3.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:17,071 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f44f3829852f4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:17,480 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3304b6cc9ee2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:17,851 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5f6463fbeee4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:18,206 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2f867b55f6ac.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:18,553 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f61e9c61b0626.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:18,947 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f15e7a37abb68.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:19,360 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f301f214b06f2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:19,720 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4155c7ac09c8.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:20,486 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f541e151d6d52.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:20,924 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3727136c113e.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:21,471 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4d14ab2afb1d.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:21,844 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f64442511d3c1.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:22,252 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5404665bab60.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:22,967 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f6317aea89dc4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:23,315 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f25df499d395b.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:23,883 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5be90155d837.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:24,252 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f56b4881af040.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:24,587 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f59520a235802.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:24,906 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f60994ef69e84.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:25,283 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f459d8cbd72d3.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:25,616 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4cf32af443f7.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:26,207 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3456f74e0845.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:26,555 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1b897865101b.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:27,185 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5a82dc5d8cd4.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:27,566 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f152f20441147.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:27,965 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5494fd349c24.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:28,389 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5f744fe1785a.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:28,933 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f4f9f32681704.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:29,495 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f51911c4d7e01.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:29,805 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1960067929c2.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:34,032 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1e15f9f880e5.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:34,499 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f145237acd397.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:35,088 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f49d99bb40dc1.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:35,656 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f2186b5b77bc5.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:36,019 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f3d305bbd0270.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:36,490 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f58bc4ed6c0fc.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:37,037 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5d7e94225bbb.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:37,859 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f59d6a8682390.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:38,186 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5ebc6f787ef7.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:38,569 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f36a3bf4ac966.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:39,005 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5c66dafb7658.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:39,426 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f5f7f2619d350.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:39,758 - DailyMailSummarizer - ERROR - An error occured while uploading file '194f1e5f45d04e3d.txt': {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-03-07 01:50:39,758 - DailyMailSummarizer - INFO - All files uploaded.

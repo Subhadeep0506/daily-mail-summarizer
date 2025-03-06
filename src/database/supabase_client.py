@@ -73,6 +73,7 @@ class SupabaseClient:
     def list_files(self, bucket_name: str):
         try:
             res = self.supabase.storage.from_(bucket_name).list()
+            self.logger.info(f"Fetched {len(res)} files from bucket '{bucket_name}'.")
             return res
         except Exception as e:
             self.logger.error(f"An error occured while listing files: {e}")
