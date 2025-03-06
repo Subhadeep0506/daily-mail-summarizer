@@ -1,16 +1,19 @@
 import yaml
 from dotenv import load_dotenv
+from ..core.logger import SingletonLogger
 
 
 def load_env():
+    logger = SingletonLogger().logger
     try:
         config = {}
         with open("src/config/config.yaml", "r") as file:
             config = yaml.safe_load(file)
         loaded_env = load_dotenv()
         if loaded_env:
+            logger.info("Environment variables loaded")
             return config
         else:
-            raise ValueError(f"Could not load config.")
+            logger.error("Could not load environment variables")
     except Exception as e:
-        raise Exception(f"Error loading config: {e}")
+        logger.error(f"Error loading env: {e}")

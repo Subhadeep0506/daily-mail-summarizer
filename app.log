@@ -1,0 +1,21 @@
+2025-03-07 01:05:18,176 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-03-07 01:05:19,904 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-03-07 01:05:19,904 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-03-07 01:05:26,048 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-03-07 01:05:28,196 - DailyMailSummarizer - INFO - Database tables created
+2025-03-07 01:05:28,197 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-03-07 01:05:28,208 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/02/11, End Date: 2025/02/12
+2025-03-07 01:06:16,389 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 67
+2025-03-07 01:09:19,678 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-03-07 01:09:22,317 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-03-07 01:09:22,318 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-03-07 01:09:26,764 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-03-07 01:09:29,974 - DailyMailSummarizer - INFO - Data added to table 'messages'
+2025-03-07 01:12:42,896 - DailyMailSummarizer - INFO - All files uploaded.
+2025-03-07 01:17:30,570 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-03-07 01:17:34,940 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-03-07 01:17:34,940 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-03-07 01:17:40,927 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-03-07 01:17:40,929 - DailyMailSummarizer - INFO - Token Expired. Refreshing Gmail client from credentials.json
+2025-03-07 01:17:42,162 - DailyMailSummarizer - INFO - Database tables created
+2025-03-07 01:17:42,162 - DailyMailSummarizer - INFO - SupabaseClient initialized

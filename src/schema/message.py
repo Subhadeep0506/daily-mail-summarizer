@@ -1,22 +1,20 @@
-from pydantic import BaseModel
-from .types import types
+import datetime
+
+from sqlalchemy import Column, DateTime, String
+from sqlalchemy.dialects.postgresql import ENUM
+from ..database.database import Base
 
 
-class Message(BaseModel):
-    _id: str
-    message_id: str
-    thread_id: str
-    labels: str
-    timestamp: str
-    subject: str
-    add_from: str
-    add_to: str
-    snippet: str
-    file_name: str
+class Message(Base):
+    __tablename__ = "messages"
 
-    @staticmethod
-    def get_schema():
-        fileds = Message.__annotations__
-        return [
-            {"col_name": k, "type": types[str(v.__name__)]} for k, v in fileds.items()
-        ]
+    id = Column(String, primary_key=True, unique=True)
+    message_id = Column(String(50), nullable=False)
+    thread_id = Column(String(50), nullable=False)
+    labels = Column(String(100), nullable=False)
+    timestamp = Column(DateTime, default=datetime.datetime.now)
+    subject = Column(String(500), nullable=True)
+    add_from = Column(String(100), nullable=True)
+    add_to = Column(String(100), nullable=True)
+    snippet = Column(String(1000), nullable=True)
+    file_name = Column(String(20), nullable=False)

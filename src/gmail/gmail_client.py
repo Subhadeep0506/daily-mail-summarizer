@@ -2,45 +2,47 @@ import os.path
 import base64
 import uuid
 
-from oauth2client.file import Storage
-from oauth2client import client, tools
-
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
-from google.oauth2.service_account import Credentials as ServiceAccountCredentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from datetime import datetime, timedelta
-from ..exceptions.gmail_exceptions import NoMessagesException
+from datetime import datetime
+from ..core.logger import SingletonLogger
 
 
 class GmailClient:
     def __init__(self, email="subhadeepdoublecap@gmail.com") -> None:
+        self.logger = SingletonLogger().logger
         self.creds = None
         try:
-            if os.getenv("DEBUG_MODE") == "1":
+            if os.getenv("DEBUG_MODE") == "0":
                 if os.path.exists("token.json"):
+                    self.logger.info("Loading Gmail client from token.json")
                     self.creds = Credentials.from_authorized_user_file(
                         "token.json", [os.getenv("GMAIL_SCOPE")]
                     )
                 if not self.creds or not self.creds.valid:
+                    self.logger.info(
+                        "Token Expired. Refreshing Gmail client from credentials.json"
+                    )
                     if self.creds and self.creds.expired and self.creds.refresh_token:
                         self.creds.refresh(Request())
                     else:
+                        self.logger.info(
+                            "Creating new Gmail client from credentials.json"
+                        )
                         flow = InstalledAppFlow.from_client_secrets_file(
-                            "credentials.json", [os.getenv("GMAIL_SCOPE")]
+                            "credentials.json",
+                            [os.getenv("GMAIL_SCOPE")],
+                            redirect_uri="urn:ietf:wg:oauth:2.0:oob",
                         )
                         auth_url, _ = flow.authorization_url(prompt="consent")
                         print("Please go to this URL: {}".format(auth_url))
                         code = input("Enter the authorization code: ")
                         flow.fetch_token(code=code)
-                        session = flow.authorized_session()
-                        print(
-                            session.get(
-                                "https://www.googleapis.com/userinfo/v2/me"
-                            ).json()
-                        )
+                        print("Creds:", flow.credentials.to_json())
+                        self.creds = flow.credentials
                     # Save the credentials for the next run
                     with open("token.json", "w") as token:
                         token.write(self.creds.to_json())
@@ -65,13 +67,16 @@ class GmailClient:
                     with open("token.json", "w") as token:
                         token.write(self.creds.to_json())
         except Exception as e:
-            raise Exception(f"An error occured while loading Gmail client: {e}")
+            self.logger.error(f"An error occured while loading Gmail client: {e}")
 
     def read_emails_for_date(self, start_date_str: str, end_date_str: str):
         """Shows basic usage of the Gmail API.
         Lists the user's Gmail labels and messages.
         """
         try:
+            self.logger.info(
+                f"Reading emails from Gmail. Start Date: {start_date_str}, End Date: {end_date_str}"
+            )
             service = build("gmail", "v1", credentials=self.creds)
             results = service.users().labels().list(userId="me").execute()
             labels = results.get("labels", [])
@@ -89,7 +94,7 @@ class GmailClient:
             messages = messages_result.get("messages", [])
 
             if not messages:
-                print("No messages found.")
+                self.logger.error("No messages found")
                 return
 
             fetched_messages = []
@@ -122,7 +127,7 @@ class GmailClient:
                         to_address = header["value"]
                 fetched_messages.append(
                     {
-                        "_id": str(uuid.uuid4()),
+                        "id": str(uuid.uuid4()),
                         "message_id": msg_id,
                         "thread_id": thread_id,
                         "timestamp": date,
@@ -137,10 +142,12 @@ class GmailClient:
                 self.save_message_to_file(
                     self.get_message_body(msg_payload), message_file_id=msg_id
                 )
+            self.logger.info(
+                f"Emails read from Gmail. Total emails: {len(fetched_messages)}"
+            )
             return fetched_messages
         except HttpError as error:
-            # Handle errors from gmail API.
-            print(f"An error occurred: {error}")
+            self.logger.error(f"An error occurred while fetching messages: {error}")
 
     def get_message_body(self, msg_payload):
         """Get the body of the message"""
@@ -163,7 +170,7 @@ class GmailClient:
                     "utf-8"
                 )
         except Exception as e:
-            raise Exception(f"Failed to prcess mail content: {e}")
+            self.logger.error(f"An error occurred while fetching message body: {e}")
 
     def save_message_to_file(self, message_content: str, message_file_id: str):
         os.makedirs("temp", exist_ok=True)
@@ -172,4 +179,4 @@ class GmailClient:
                 with open(f"temp/{message_file_id}.txt", "w") as file:
                     file.write(message_content)
         except Exception as e:
-            raise Exception(f"Error occured for file {message_file_id}: {e}")
+            self.logger.error(f"An error occurred while saving message to file: {e}")
