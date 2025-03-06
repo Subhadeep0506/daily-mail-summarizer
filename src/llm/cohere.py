@@ -1,4 +1,5 @@
 from .base import BaseLLMSummarizer
+from langchain_cohere import ChatCohere
 
 
 class CohereSummarizer(BaseLLMSummarizer):
