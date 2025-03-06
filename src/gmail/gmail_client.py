@@ -19,28 +19,31 @@ class GmailClient:
     def __init__(self, email="subhadeepdoublecap@gmail.com") -> None:
         self.creds = None
         try:
-            if os.path.exists("token.json"):
-                self.creds = Credentials.from_authorized_user_file(
-                    "token.json", [os.getenv("GMAIL_SCOPE")]
-                )
-            if not self.creds or not self.creds.valid:
-                if self.creds and self.creds.expired and self.creds.refresh_token:
-                    self.creds.refresh(Request())
-                else:
-                    flow = InstalledAppFlow.from_client_secrets_file(
-                        "credentials.json", [os.getenv("GMAIL_SCOPE")]
+            if os.getenv("DEBUG_MODE") == "1":
+                if os.path.exists("token.json"):
+                    self.creds = Credentials.from_authorized_user_file(
+                        "token.json", [os.getenv("GMAIL_SCOPE")]
                     )
-                    auth_url, _ = flow.authorization_url(prompt="consent")
-                    print("Please go to this URL: {}".format(auth_url))
-                    code = input("Enter the authorization code: ")
-                    flow.fetch_token(code=code)
-                    session = flow.authorized_session()
-                    print(
-                        session.get("https://www.googleapis.com/userinfo/v2/me").json()
-                    )
-                # Save the credentials for the next run
-                with open("token.json", "w") as token:
-                    token.write(self.creds.to_json())
+                if not self.creds or not self.creds.valid:
+                    if self.creds and self.creds.expired and self.creds.refresh_token:
+                        self.creds.refresh(Request())
+                    else:
+                        flow = InstalledAppFlow.from_client_secrets_file(
+                            "credentials.json", [os.getenv("GMAIL_SCOPE")]
+                        )
+                        auth_url, _ = flow.authorization_url(prompt="consent")
+                        print("Please go to this URL: {}".format(auth_url))
+                        code = input("Enter the authorization code: ")
+                        flow.fetch_token(code=code)
+                        session = flow.authorized_session()
+                        print(
+                            session.get(
+                                "https://www.googleapis.com/userinfo/v2/me"
+                            ).json()
+                        )
+                    # Save the credentials for the next run
+                    with open("token.json", "w") as token:
+                        token.write(self.creds.to_json())
             else:
                 if os.path.exists("token.json"):
                     self.creds = Credentials.from_authorized_user_file(
