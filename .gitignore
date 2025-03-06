@@ -4,3 +4,4 @@ credentials*.json
 token.json
 **/__pycache__/
 temp/*
+service-account-key.json

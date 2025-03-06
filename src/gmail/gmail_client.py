@@ -2,8 +2,12 @@ import os.path
 import base64
 import uuid
 
+from oauth2client.file import Storage
+from oauth2client import client, tools
+
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
+from google.oauth2.service_account import Credentials as ServiceAccountCredentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -12,7 +16,7 @@ from ..exceptions.gmail_exceptions import NoMessagesException
 
 
 class GmailClient:
-    def __init__(self) -> None:
+    def __init__(self, email="subhadeepdoublecap@gmail.com") -> None:
         self.creds = None
         try:
             if os.path.exists("token.json"):
@@ -26,10 +30,37 @@ class GmailClient:
                     flow = InstalledAppFlow.from_client_secrets_file(
                         "credentials.json", [os.getenv("GMAIL_SCOPE")]
                     )
-                    self.creds = flow.run_local_server(port=8088)
+                    auth_url, _ = flow.authorization_url(prompt="consent")
+                    print("Please go to this URL: {}".format(auth_url))
+                    code = input("Enter the authorization code: ")
+                    flow.fetch_token(code=code)
+                    session = flow.authorized_session()
+                    print(
+                        session.get("https://www.googleapis.com/userinfo/v2/me").json()
+                    )
                 # Save the credentials for the next run
                 with open("token.json", "w") as token:
                     token.write(self.creds.to_json())
+            else:
+                if os.path.exists("token.json"):
+                    self.creds = Credentials.from_authorized_user_file(
+                        "token.json", [os.getenv("GMAIL_SCOPE")]
+                    )
+                if not self.creds or not self.creds.valid:
+                    if self.creds and self.creds.expired and self.creds.refresh_token:
+                        self.creds.refresh(Request())
+                    else:
+                        flow = InstalledAppFlow.from_client_secrets_file(
+                            "credentials.json", [os.getenv("GMAIL_SCOPE")]
+                        )
+                        self.creds = flow.run_local_server(
+                            bind_addr="0.0.0.0",
+                            open_browser=True,
+                            port=8088,
+                        )
+                    # Save the credentials for the next run
+                    with open("token.json", "w") as token:
+                        token.write(self.creds.to_json())
         except Exception as e:
             raise Exception(f"An error occured while loading Gmail client: {e}")
 
