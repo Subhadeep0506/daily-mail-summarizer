@@ -1,10 +1,19 @@
 from abc import ABC, abstractmethod
 
 
-class BaseLLMSummarizer:
+class BaseLLM(ABC):
     def __init__(self) -> None:
         self.model = None
 
     @abstractmethod
-    def summarize_content(self, content):
+    def get_model(self):
+        pass
+
+
+class BaseEmbeddings(ABC):
+    def __init__(self) -> None:
+        self.model = None
+
+    @abstractmethod
+    def get_model(self):
         pass

@@ -1,5 +1,5 @@
-from .cohere import CohereSummarizer
-from .groq import GroqSummarizer
-from .gemini import GeminiSummarizer
+from .cohere import CohereLLM
+from .groq import GroqLLM
+from .gemini import GeminiLLM
 
-__all__ = ["CohereSummarizer", "GroqSummarizer", "GeminiSummarizer"]
+__all__ = ["CohereLLM", "GroqLLM", "GeminiLLM"]

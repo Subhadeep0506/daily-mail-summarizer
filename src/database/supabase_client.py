@@ -24,7 +24,7 @@ class SupabaseClient:
             url: str = os.environ.get("SUPABASE_URL")
             key: str = os.environ.get("SUPABASE_KEY")
             self.supabase: Client = create_client(url, key)
-            Base.metadata.create_all(engine)
+            Base.metadata.create_all(bind=engine)
             self.logger.info("Database tables created")
             self.logger.info("SupabaseClient initialized")
         except Exception as e:

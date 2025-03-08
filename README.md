@@ -15,3 +15,7 @@ The project requires the following software specification:
 - Gmail API key
 
 ## Development
+
+## Architecture
+
+[Excalidraw Diagram](https://excalidraw.com/#room=149bf8e7479c0b2bc253,fKQ-Nz1pOvY3DcqhviCJow)
