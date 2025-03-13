@@ -1,7 +1,7 @@
 import os
 
 from typing import List
-from supabase import create_client, Client
+from supabase import create_client, Client, StorageException
 from ..database.database import engine, Base
 from ..core.logger import SingletonLogger
 
@@ -22,7 +22,7 @@ class SupabaseClient:
             return
         try:
             url: str = os.environ.get("SUPABASE_URL")
-            key: str = os.environ.get("SUPABASE_KEY")
+            key: str = os.environ.get("SUPABASE_SERVICE_KEY")
             self.supabase: Client = create_client(url, key)
             Base.metadata.create_all(bind=engine)
             self.logger.info("Database tables created")
@@ -52,28 +52,51 @@ class SupabaseClient:
         except Exception as e:
             self.logger.error(f"An error occured while creating storage bucket: {e}")
 
-    def upload_files(self, files: List):
+    def upload_files(self, files: List, bucket_name: str):
         responses = []
-        for file in files:
-            try:
-                with open(os.path.join("temp", file), "rb") as f:
-                    resp = self.supabase.storage.from_("emails").upload(
-                        file=f,
-                        path=f"/{file}",
-                        file_options={"content-type": "plain/text"},
+        try:
+            bucket = self.supabase.storage.get_bucket(bucket_name)
+            for file in files:
+                try:
+                    with open(os.path.join("temp", file), "rb") as f:
+                        resp = bucket.upload(
+                            file=f,
+                            path=f"/{file}",
+                            file_options={"content-type": "application/json"},
+                        )
+                        responses.append(resp)
+                except Exception as e:
+                    self.logger.error(
+                        f"An error occured while uploading file '{file}': {e}"
                     )
-                    responses.append(resp)
-            except Exception as e:
-                self.logger.error(
-                    f"An error occured while uploading file '{file}': {e}"
-                )
-        self.logger.info(f"All files uploaded.")
-        return responses
+            self.logger.info(f"All files uploaded.")
+            return responses
+        except StorageException as e:
+            self.logger.error(f"Bucket with name '{bucket_name}' not found: {e}")
 
     def list_files(self, bucket_name: str):
         try:
-            res = self.supabase.storage.from_(bucket_name).list()
+            bucket = self.supabase.storage.get_bucket(bucket_name)
+            res = bucket.list()
             self.logger.info(f"Fetched {len(res)} files from bucket '{bucket_name}'.")
             return res
+        except StorageException as e:
+            self.logger.error(f"Bucket with name '{bucket_name}' not found: {e}")
+        except Exception as e:
+            self.logger.error(f"An error occured while listing files: {e}")
+
+    def get_file_urls(self, bucket_name: str):
+        try:
+            bucket = self.supabase.storage.get_bucket(bucket_name)
+            file_metadatas = self.list_files(bucket_name)
+            file_urls = []
+            for file in file_metadatas:
+                if file["name"].endswith(".json"):
+                    res = bucket.get_public_url(file["name"], options={"download": True})
+                    file_urls.append({"name": file["name"], "url": res})
+            self.logger.info(f"Fetched {len(res)} files from bucket '{bucket_name}'.")
+            return file_urls
+        except StorageException as e:
+            self.logger.error(f"Bucket with name '{bucket_name}' not found: {e}")
         except Exception as e:
             self.logger.error(f"An error occured while listing files: {e}")

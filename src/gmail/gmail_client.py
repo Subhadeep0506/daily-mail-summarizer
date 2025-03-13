@@ -95,7 +95,7 @@ class GmailClient:
 
             if not messages:
                 self.logger.error("No messages found")
-                return
+                return []
 
             fetched_messages = []
             for msg in messages:
@@ -136,11 +136,8 @@ class GmailClient:
                         "add_from": from_address,
                         "add_to": to_address,
                         "snippet": msg_snippet,
-                        "file_name": f"{msg_id}.txt",
+                        "message_content": self.get_message_body(msg_payload),
                     }
-                )
-                self.save_message_to_file(
-                    self.get_message_body(msg_payload), message_file_id=msg_id
                 )
             self.logger.info(
                 f"Emails read from Gmail. Total emails: {len(fetched_messages)}"
@@ -148,8 +145,9 @@ class GmailClient:
             return fetched_messages
         except HttpError as error:
             self.logger.error(f"An error occurred while fetching messages: {error}")
+            return []
 
-    def get_message_body(self, msg_payload):
+    def get_message_body(self, msg_payload) -> str:
         """Get the body of the message"""
         try:
             if "parts" in msg_payload:
@@ -163,20 +161,11 @@ class GmailClient:
                             "utf-8"
                         )
                     else:
-                        print(part["body"])
-                        return None
+                        return "Meessage is empty."
             else:
                 return base64.urlsafe_b64decode(msg_payload["body"]["data"]).decode(
                     "utf-8"
                 )
         except Exception as e:
             self.logger.error(f"An error occurred while fetching message body: {e}")
-
-    def save_message_to_file(self, message_content: str, message_file_id: str):
-        os.makedirs("temp", exist_ok=True)
-        try:
-            if message_content:
-                with open(f"temp/{message_file_id}.txt", "w") as file:
-                    file.write(message_content)
-        except Exception as e:
-            self.logger.error(f"An error occurred while saving message to file: {e}")
+            return "Message not parsed."
