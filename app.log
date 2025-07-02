@@ -653,3 +653,25 @@
 2025-07-02 13:40:41,423 - DailyMailSummarizer - INFO - Database tables created
 2025-07-02 13:40:41,426 - DailyMailSummarizer - INFO - SupabaseClient initialized
 2025-07-02 13:41:04,800 - DailyMailSummarizer - INFO - Fetched 72 files from bucket 'emails'.
+2025-07-02 23:28:32,583 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-02 23:28:34,339 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-02 23:28:34,339 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-02 23:28:45,994 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-02 23:28:47,544 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-02 23:28:47,545 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-02 23:28:54,204 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-07-02 23:28:54,210 - DailyMailSummarizer - INFO - Token Expired. Refreshing Gmail client from credentials.json
+2025-07-02 23:28:54,452 - DailyMailSummarizer - ERROR - An error occured while loading Gmail client: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+2025-07-02 23:28:54,709 - DailyMailSummarizer - INFO - Database tables created
+2025-07-02 23:28:54,711 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-07-02 23:28:58,453 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/07/01, End Date: 2025/07/02
+2025-07-02 23:30:13,006 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/07/01, End Date: 2025/07/02
+2025-07-02 23:31:11,101 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/07/01, End Date: 2025/07/02
+2025-07-02 23:31:15,546 - DailyMailSummarizer - INFO - Token Expired. Refreshing Gmail client from credentials.json
+2025-07-02 23:31:15,546 - DailyMailSummarizer - INFO - Creating new Gmail client from credentials.json
+2025-07-02 23:31:40,012 - DailyMailSummarizer - INFO - Database tables created
+2025-07-02 23:31:40,012 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-07-02 23:31:42,527 - DailyMailSummarizer - INFO - Reading emails from Gmail. Start Date: 2025/07/01, End Date: 2025/07/02
+2025-07-02 23:32:24,190 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 69
+2025-07-02 23:33:10,953 - DailyMailSummarizer - INFO - Adding data to table 'messages'
+2025-07-02 23:33:11,857 - DailyMailSummarizer - ERROR - An error occured while adding data to table 'messages': {'code': '23505', 'details': 'Key (message_id)=(197c6fd29380a31c) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint "messages_pkey"'}
