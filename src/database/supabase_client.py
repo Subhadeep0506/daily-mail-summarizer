@@ -45,6 +45,15 @@ class SupabaseClient:
                 f"An error occured while adding data to table '{table_name}': {exception}"
             )
 
+    # TODO: Implement this function
+    def update_bulk_data(self, table_name: str, data: List):
+        try:
+            self.logger.info(f"Updating data in table '{table_name}'")
+        except Exception as exception:
+            self.logger.error(
+                f"An error occured while updating data in table '{table_name}': {exception}"
+            )
+
     def create_storage_bucket(self, bucket_name: str):
         try:
             res = self.supabase.storage.create_bucket(bucket_name)
@@ -93,7 +102,9 @@ class SupabaseClient:
             file_urls = []
             for file in file_metadatas:
                 if file["name"].endswith(".json"):
-                    res = bucket.get_public_url(file["name"], options={"download": True})
+                    res = bucket.get_public_url(
+                        file["name"], options={"download": True}
+                    )
                     file_urls.append({"name": file["name"], "url": res})
             self.logger.info(f"Fetched {len(res)} files from bucket '{bucket_name}'.")
             return file_urls
