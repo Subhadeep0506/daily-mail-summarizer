@@ -644,3 +644,12 @@
 2025-07-02 12:02:36,536 - DailyMailSummarizer - ERROR - An error occured while uploading file '197c7824c6fdb516.txt': {'statusCode': 400, 'error': 'Unauthorized', 'message': 'new row violates row-level security policy'}
 2025-07-02 12:02:36,537 - DailyMailSummarizer - INFO - All files uploaded.
 2025-07-02 12:08:05,663 - DailyMailSummarizer - INFO - All files uploaded.
+2025-07-02 12:18:03,587 - DailyMailSummarizer - INFO - Fetched 72 files from bucket 'emails'.
+2025-07-02 13:40:35,624 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-02 13:40:36,891 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-02 13:40:36,891 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-02 13:40:40,821 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-07-02 13:40:40,824 - DailyMailSummarizer - INFO - Token Expired. Refreshing Gmail client from credentials.json
+2025-07-02 13:40:41,423 - DailyMailSummarizer - INFO - Database tables created
+2025-07-02 13:40:41,426 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-07-02 13:41:04,800 - DailyMailSummarizer - INFO - Fetched 72 files from bucket 'emails'.

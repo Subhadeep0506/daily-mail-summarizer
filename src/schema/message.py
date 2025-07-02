@@ -18,3 +18,4 @@ class Message(Base):
     add_to = Column(String, nullable=True)
     snippet = Column(String, nullable=True)
     file_name = Column(String, nullable=False)
+    file_url = Column(String, nullable=True)

@@ -44,9 +44,17 @@ class SupabaseClient:
                 f"An error occured while adding data to table '{table_name}': {exception}"
             )
 
-    def create_storage_bucket(self, bucket_name: str):
+    def update_bulk_data(self, table_name: str, data: List):
         try:
-            res = self.supabase.storage.create_bucket(bucket_name, options={"public": True})
+            self.logger.info(f"Updating data in table '{table_name}'")
+        except Exception as exception:
+            self.logger.error(
+                f"An error occured while updating data in table '{table_name}': {exception}"
+            )
+
+    def create_storage_bucket(self, bucket_name: str, is_public: bool = False):
+        try:
+            res = self.supabase.storage.create_bucket(bucket_name, options={"public": is_public})
             self.logger.info(f"Storage bucket created: {bucket_name}")
             return res
         except Exception as e:
@@ -77,3 +85,12 @@ class SupabaseClient:
             return res
         except Exception as e:
             self.logger.error(f"An error occured while listing files: {e}")
+            return []
+
+    def get_file_url(self, file_path: str, bucket_name: str) -> str:
+        try:
+            res = self.supabase.storage.from_(bucket_name).get_public_url(path=file_path)
+            return res
+        except Exception as e:
+            self.logger.error(f"An error occured while getting file public url: {e}")
+            return None
