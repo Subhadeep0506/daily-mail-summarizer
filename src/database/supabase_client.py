@@ -46,7 +46,7 @@ class SupabaseClient:
 
     def create_storage_bucket(self, bucket_name: str):
         try:
-            res = self.supabase.storage.create_bucket(bucket_name)
+            res = self.supabase.storage.create_bucket(bucket_name, options={"public": True})
             self.logger.info(f"Storage bucket created: {bucket_name}")
             return res
         except Exception as e:
