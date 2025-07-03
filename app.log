@@ -675,3 +675,133 @@
 2025-07-02 23:32:24,190 - DailyMailSummarizer - INFO - Emails read from Gmail. Total emails: 69
 2025-07-02 23:33:10,953 - DailyMailSummarizer - INFO - Adding data to table 'messages'
 2025-07-02 23:33:11,857 - DailyMailSummarizer - ERROR - An error occured while adding data to table 'messages': {'code': '23505', 'details': 'Key (message_id)=(197c6fd29380a31c) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint "messages_pkey"'}
+2025-07-03 05:39:00,383 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 05:39:01,778 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 05:39:01,779 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 05:39:12,191 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-07-03 05:39:12,240 - DailyMailSummarizer - INFO - Token Expired. Refreshing Gmail client from credentials.json
+2025-07-03 05:39:12,855 - DailyMailSummarizer - INFO - Database tables created
+2025-07-03 05:39:12,855 - DailyMailSummarizer - INFO - SupabaseClient initialized
+2025-07-03 09:04:15,772 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:04:17,278 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:04:17,278 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:04:21,636 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-07-03 09:07:01,962 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:07:03,191 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:07:03,191 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:07:06,492 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-07-03 09:08:21,645 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:08:22,903 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:08:22,903 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:08:26,339 - DailyMailSummarizer - INFO - Loading Gmail client from token.json
+2025-07-03 09:10:24,135 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:10:25,369 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:10:25,370 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:23:11,410 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:23:12,755 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:23:12,755 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:24:00,924 - DailyMailSummarizer - ERROR - Error saving credentials: (psycopg2.errors.UndefinedTable) relation "user_token" does not exist
+LINE 2: FROM user_token 
+             ^
+
+[SQL: SELECT user_token.id AS user_token_id, user_token.user_id AS user_token_user_id, user_token.email AS user_token_email, user_token.token AS user_token_token, user_token.refresh_token AS user_token_refresh_token, user_token.token_uri AS user_token_token_uri, user_token.client_id AS user_token_client_id, user_token.client_secret AS user_token_client_secret, user_token.scopes AS user_token_scopes, user_token.universe_domain AS user_token_universe_domain, user_token.account AS user_token_account, user_token.expiry AS user_token_expiry, user_token.status AS user_token_status, user_token.created_at AS user_token_created_at, user_token.updated_at AS user_token_updated_at 
+FROM user_token 
+WHERE user_token.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'subhadeepdoublecap@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-07-03 09:27:29,332 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:27:30,531 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:27:30,532 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:27:59,661 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:28:01,229 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:28:01,229 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:28:54,989 - DailyMailSummarizer - ERROR - Error saving credentials: 'Credentials' object has no attribute 'to_dict'
+2025-07-03 09:31:40,944 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:31:42,171 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:31:42,171 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:33:07,809 - DailyMailSummarizer - ERROR - Error saving credentials: (psycopg2.errors.ForeignKeyViolation) insert or update on table "user_token" violates foreign key constraint "user_token_user_id_fkey"
+DETAIL:  Key (user_id)=(default_user_id) is not present in table "user".
+
+[SQL: INSERT INTO user_token (id, user_id, email, token, refresh_token, token_uri, client_id, client_secret, scopes, universe_domain, account, expiry, status, created_at, updated_at) VALUES (%(id)s, %(user_id)s, %(email)s, %(token)s, %(refresh_token)s, %(token_uri)s, %(client_id)s, %(client_secret)s, %(scopes)s, %(universe_domain)s, %(account)s, %(expiry)s, %(status)s, %(created_at)s, %(updated_at)s)]
+[parameters: {'id': '6f24c6be-5e30-4e3e-b262-d86358e2692b', 'user_id': 'default_user_id', 'email': 'subhadeepdoublecap@gmail.com', 'token': 'ya29.a0AS3H6NzJ_TPRraEXyQjCSYswOueRN0rQybfC5zOdnj1pcWizr8kGGo0YVVEwZ2T0vtsflF8QCwqcyj_0N45IKs-Ww-wU3QOCJagxy5GDWE4TdIhO-QRHx1VljuXJtTqcc75eKJYQj0LQ21ElmEskP-OluUJaxQoOdlXkh4hpaCgYKAWsSARYSFQHGX2MiMD7LCe5VoOgsUSi-kbukSQ0175', 'refresh_token': '1//0eVr0fR4qPJlICgYIARAAGA4SNwF-L9IrCgZfYCIi1NvVx0lcL-MCi8Gaoln2hLNmoq4GypVlXcQ-dCD02_dOpCDVv2P5jTGooNM', 'token_uri': 'https://oauth2.googleapis.com/token', 'client_id': '249664575286-umegir7ikhndki4ckccofcq90ghcdo1c.apps.googleusercontent.com', 'client_secret': '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', 'scopes': 'https://www.googleapis.com/auth/gmail.readonly', 'universe_domain': 'googleapis.com', 'account': '', 'expiry': '2025-07-03T10:33:06.258053Z', 'status': True, 'created_at': datetime.datetime(2025, 7, 3, 9, 33, 7, 538427), 'updated_at': datetime.datetime(2025, 7, 3, 9, 33, 7, 538434)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-03 09:36:34,403 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:36:35,623 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:36:35,624 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:37:13,703 - DailyMailSummarizer - ERROR - Error saving credentials: (psycopg2.errors.ForeignKeyViolation) insert or update on table "user_token" violates foreign key constraint "user_token_user_id_fkey"
+DETAIL:  Key (user_id)=(default_user_id) is not present in table "user".
+
+[SQL: INSERT INTO user_token (id, user_id, email, token, refresh_token, token_uri, client_id, client_secret, scopes, universe_domain, account, expiry, status, created_at, updated_at) VALUES (%(id)s, %(user_id)s, %(email)s, %(token)s, %(refresh_token)s, %(token_uri)s, %(client_id)s, %(client_secret)s, %(scopes)s, %(universe_domain)s, %(account)s, %(expiry)s, %(status)s, %(created_at)s, %(updated_at)s)]
+[parameters: {'id': '97f0615a-a594-4e5d-9608-6e94e727a004', 'user_id': 'default_user_id', 'email': 'subhadeepdoublecap@gmail.com', 'token': 'ya29.a0AS3H6NxQt_4aIONmghP9BkEkItONzdL3_LcMRdO3eYBAIbkmnjxKmqpRk02O-YVgJux8PgC9puNZ202SEbmw5n3NQIwsHh7GIlvwvu8lUmgdLR2nPiiMMkAzHLGXaToCnito2jdItcXztxvC_dol6Mpd6HJt7i2eNrHffHOyaCgYKAYkSARYSFQHGX2MiJ_Jqtzt262-trJurvLOSfg0175', 'refresh_token': '1//0eUfKK0KPSsxMCgYIARAAGA4SNwF-L9Irn6xf3I8PSKrvJHVaOn1SSTfoHKAHtWqJJazYzNN2HQqFXsJogeR78YxWDFKAaK7lb10', 'token_uri': 'https://oauth2.googleapis.com/token', 'client_id': '249664575286-umegir7ikhndki4ckccofcq90ghcdo1c.apps.googleusercontent.com', 'client_secret': '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', 'scopes': 'https://www.googleapis.com/auth/gmail.readonly', 'universe_domain': 'googleapis.com', 'account': '', 'expiry': '2025-07-03T10:37:12.122563Z', 'status': True, 'created_at': datetime.datetime(2025, 7, 3, 9, 37, 13, 418197), 'updated_at': datetime.datetime(2025, 7, 3, 9, 37, 13, 418203)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-03 09:42:59,348 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:43:00,574 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:43:00,575 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:45:37,249 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 09:45:38,467 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 09:45:38,467 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 09:53:55,106 - DailyMailSummarizer - ERROR - Error loading credentials: (psycopg2.OperationalError) server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[SQL: SELECT user_token.id AS user_token_id, user_token.user_id AS user_token_user_id, user_token.email AS user_token_email, user_token.token AS user_token_token, user_token.refresh_token AS user_token_refresh_token, user_token.token_uri AS user_token_token_uri, user_token.client_id AS user_token_client_id, user_token.client_secret AS user_token_client_secret, user_token.scopes AS user_token_scopes, user_token.universe_domain AS user_token_universe_domain, user_token.account AS user_token_account, user_token.expiry AS user_token_expiry, user_token.status AS user_token_status, user_token.created_at AS user_token_created_at, user_token.updated_at AS user_token_updated_at 
+FROM user_token 
+WHERE user_token.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'subhadeepdoublecap@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-07-03 09:58:10,456 - DailyMailSummarizer - ERROR - Error loading credentials: (psycopg2.OperationalError) server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[SQL: SELECT user_token.id AS user_token_id, user_token.user_id AS user_token_user_id, user_token.email AS user_token_email, user_token.token AS user_token_token, user_token.refresh_token AS user_token_refresh_token, user_token.token_uri AS user_token_token_uri, user_token.client_id AS user_token_client_id, user_token.client_secret AS user_token_client_secret, user_token.scopes AS user_token_scopes, user_token.universe_domain AS user_token_universe_domain, user_token.account AS user_token_account, user_token.expiry AS user_token_expiry, user_token.status AS user_token_status, user_token.created_at AS user_token_created_at, user_token.updated_at AS user_token_updated_at 
+FROM user_token 
+WHERE user_token.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'subhadeepdoublecap@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-07-03 10:02:33,833 - DailyMailSummarizer - ERROR - Error loading credentials: (psycopg2.OperationalError) server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[SQL: SELECT user_token.id AS user_token_id, user_token.user_id AS user_token_user_id, user_token.email AS user_token_email, user_token.token AS user_token_token, user_token.refresh_token AS user_token_refresh_token, user_token.token_uri AS user_token_token_uri, user_token.client_id AS user_token_client_id, user_token.client_secret AS user_token_client_secret, user_token.scopes AS user_token_scopes, user_token.universe_domain AS user_token_universe_domain, user_token.account AS user_token_account, user_token.expiry AS user_token_expiry, user_token.status AS user_token_status, user_token.created_at AS user_token_created_at, user_token.updated_at AS user_token_updated_at 
+FROM user_token 
+WHERE user_token.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'subhadeepdoublecap@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-07-03 10:17:03,131 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 10:17:04,366 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 10:17:04,366 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 10:17:25,440 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 10:17:26,662 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 10:17:26,662 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 10:18:08,825 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 10:18:10,072 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 10:18:10,073 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized
+2025-07-03 10:20:21,222 - DailyMailSummarizer - ERROR - Error loading credentials: (psycopg2.OperationalError) server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[SQL: SELECT user_token.id AS user_token_id, user_token.user_id AS user_token_user_id, user_token.email AS user_token_email, user_token.token AS user_token_token, user_token.refresh_token AS user_token_refresh_token, user_token.token_uri AS user_token_token_uri, user_token.client_id AS user_token_client_id, user_token.client_secret AS user_token_client_secret, user_token.scopes AS user_token_scopes, user_token.universe_domain AS user_token_universe_domain, user_token.account AS user_token_account, user_token.expiry AS user_token_expiry, user_token.status AS user_token_status, user_token.created_at AS user_token_created_at, user_token.updated_at AS user_token_updated_at 
+FROM user_token 
+WHERE user_token.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'subhadeepdoublecap@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-07-03 10:22:56,277 - DailyMailSummarizer - INFO - Environment variables loaded
+2025-07-03 10:22:57,507 - DailyMailSummarizer - INFO - Infisical Managed Credentials fetched
+2025-07-03 10:22:57,507 - DailyMailSummarizer - INFO - Infisical Managed Credentials initialized

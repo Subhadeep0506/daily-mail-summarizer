@@ -11,6 +11,9 @@
     pkgs.python312Packages.pip
     pkgs.virtualenv
     pkgs.htop
+    pkgs.docker
+    pkgs.docker-buildx
+    pkgs.docker-compose
   ];
 
   # Sets environment variables in the workspace
@@ -19,6 +22,14 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      "ms-python.debugpy"
+      "ms-python.python"
+      "ms-toolsai.jupyter"
+      "ms-toolsai.jupyter-keymap"
+      "ms-toolsai.jupyter-renderers"
+      "ms-toolsai.vscode-jupyter-cell-tags"
+      "ms-toolsai.vscode-jupyter-slideshow"
+      "PKief.material-icon-theme"
     ];
 
     # Enable previews
