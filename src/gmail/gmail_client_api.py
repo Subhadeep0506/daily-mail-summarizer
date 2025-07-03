@@ -16,11 +16,12 @@ from ..core.logger import SingletonLogger
 from ..database.database import SessionLocal
 from ..schema.user import UserToken, User
 
-# Constants
-REDIRECT_URI = "http://localhost:8009/oauth2callback"
-SCOPES = [os.getenv("GMAIL_SCOPE", "https://www.googleapis.com/auth/gmail.readonly")]
-CLIENT_SECRETS_FILE = "credentials.json"
-TOKEN_FILE = "token.json"
+SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "openid"
+]
 
 
 class GmailClient:
@@ -82,12 +83,21 @@ class GmailClient:
     async def save_credentials(self, db: Session):
         """Save credentials to the database."""
         try:
-            # Ensure a User entry exists for the email
+            service = build("people", "v1", credentials=self.creds)
+            profile = (
+                service.people()
+                .get(
+                    resourceName="people/me",
+                    personFields="names,emailAddresses",
+                )
+                .execute()
+            )
+            name = profile["names"][0]["displayName"]
+            id = profile["names"][0]["metadata"]["source"]["id"]
+            self.email = profile["emailAddresses"][0]["value"]
             user = db.query(User).filter(User.email == self.email).first()
             if not user:
-                user = User(
-                    id=str(uuid.uuid4()), name=self.email, email=self.email
-                )  # Assuming name is email for simplicity
+                user = User(id=str(id), name=name, email=self.email)
                 db.add(user)
                 db.commit()
                 db.refresh(user)
@@ -139,7 +149,9 @@ class GmailClient:
                 status_code=500, detail=f"Error saving credentials: {e}"
             )
 
-    async def read_emails_for_date(self, email: str, start_date_str: str, end_date_str: str, db: Session):
+    async def read_emails_for_date(
+        self, email: str, start_date_str: str, end_date_str: str, db: Session
+    ):
         """Fetch emails within a date range."""
         try:
             await self.load_credentials(db, email)

@@ -14,10 +14,13 @@ from src.database.database import SessionLocal
 router = APIRouter()
 
 CLIENT_SECRETS_FILE = "credentials.json"
-SCOPES = [os.getenv("GMAIL_SCOPE")]
-REDIRECT_URI = os.getenv(
-    "GMAIL_REDIRECT_URI", "http://localhost:8089/auth/oauth2callback"
-)
+SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "openid"
+]
+REDIRECT_URI = "https://8089-subhadeep05-dailymailsu-3e1maq78avb.ws-us120.gitpod.io/auth/oauth2callback"
 
 gmail_client = GmailClient()
 
@@ -41,13 +44,11 @@ async def oauth2callback(code: str, db: Session = Depends(get_db)):
         )
         flow.fetch_token(code=code)
 
-        # Save the credentials to token.json
         gmail_client.creds = flow.credentials
-        user_info = await gmail_client.save_credentials()
+        await gmail_client.save_credentials(db)
 
         return {
             "message": "Authorization successful.",
-            "user_info": user_info,
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error during OAuth callback: {e}")
