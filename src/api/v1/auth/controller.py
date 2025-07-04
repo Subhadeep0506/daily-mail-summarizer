@@ -1,7 +1,7 @@
 import os
 import datetime
 import uuid
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Request
 from sqlalchemy.orm import Session
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
@@ -34,13 +34,13 @@ def get_db():
 
 
 @router.get("/oauth2callback")
-async def oauth2callback(code: str, db: Session = Depends(get_db)):
+async def oauth2callback(code: str, request: Request, db: Session = Depends(get_db)):
     """Handle the OAuth callback and save the token."""
     try:
         flow = Flow.from_client_secrets_file(
             CLIENT_SECRETS_FILE,
             scopes=SCOPES,
-            redirect_uri=REDIRECT_URI,
+            redirect_uri=request.url_for("oauth2callback"),
         )
         flow.fetch_token(code=code)
 
@@ -55,10 +55,12 @@ async def oauth2callback(code: str, db: Session = Depends(get_db)):
 
 
 @router.get("/authorize")
-async def authorize_gmail():
+async def authorize_gmail(request: Request):
     try:
         flow = Flow.from_client_secrets_file(
-            CLIENT_SECRETS_FILE, scopes=SCOPES, redirect_uri=REDIRECT_URI
+            CLIENT_SECRETS_FILE,
+            scopes=SCOPES,
+            redirect_uri=request.url_for("oauth2callback"),
         )
         authorization_url, _ = flow.authorization_url(prompt="consent")
         return {"authorization_url": authorization_url}
