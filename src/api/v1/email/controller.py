@@ -6,7 +6,8 @@ from sqlalchemy.orm import Session
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-from src.gmail.gmail_client_api import GmailClient
+from .services import GmailService
+from ..auth.services import GoogleOAuth2Service
 from src.schema.user import User, UserToken
 from src.database.database import SessionLocal
 
@@ -19,7 +20,8 @@ REDIRECT_URI = os.getenv(
     "GMAIL_REDIRECT_URI", "http://localhost:8089/auth/oauth2callback"
 )
 
-gmail_client = GmailClient()
+google_auth = GoogleOAuth2Service()
+gmail_client = GmailService(google_auth)
 
 
 def get_db():

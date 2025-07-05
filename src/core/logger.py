@@ -1,5 +1,5 @@
-import logging
 import threading
+from loguru import logger
 
 
 class SingletonLogger:
@@ -17,12 +17,5 @@ class SingletonLogger:
         return cls._instance
 
     def _initialize(self):
-        self.logger = logging.getLogger("DailyMailSummarizer")
-        self.logger.setLevel(logging.DEBUG)
-        # FileHandler for file output
-        file_handler = logging.FileHandler("app.log")
-        file_formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
-        file_handler.setFormatter(file_formatter)
-        self.logger.addHandler(file_handler)
+        logger.add("app.log", rotation="10 MB")
+        self.logger = logger

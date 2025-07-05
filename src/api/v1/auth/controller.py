@@ -6,9 +6,10 @@ from sqlalchemy.orm import Session
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-from src.gmail.gmail_client_api import GmailClient
+from .services import GoogleOAuth2Service
 from src.schema.user import User, UserToken
 from src.database.database import SessionLocal
+from src.models.user import UserLogin
 
 
 router = APIRouter()
@@ -18,11 +19,10 @@ SCOPES = [
     "https://www.googleapis.com/auth/gmail.readonly",
     "https://www.googleapis.com/auth/userinfo.profile",
     "https://www.googleapis.com/auth/userinfo.email",
-    "openid"
+    "openid",
 ]
-REDIRECT_URI = "https://8089-subhadeep05-dailymailsu-3e1maq78avb.ws-us120.gitpod.io/auth/oauth2callback"
 
-gmail_client = GmailClient()
+google_oauth_service = GoogleOAuth2Service()
 
 
 def get_db():
@@ -44,17 +44,18 @@ async def oauth2callback(code: str, request: Request, db: Session = Depends(get_
         )
         flow.fetch_token(code=code)
 
-        gmail_client.creds = flow.credentials
-        await gmail_client.save_credentials(db)
+        google_oauth_service.creds = flow.credentials
+        user = await google_oauth_service.save_credentials(db)
 
         return {
             "message": "Authorization successful.",
+            "user_info": user
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error during OAuth callback: {e}")
 
 
-@router.get("/authorize")
+@router.get("/register")
 async def authorize_gmail(request: Request):
     try:
         flow = Flow.from_client_secrets_file(
@@ -64,6 +65,19 @@ async def authorize_gmail(request: Request):
         )
         authorization_url, _ = flow.authorization_url(prompt="consent")
         return {"authorization_url": authorization_url}
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, detail=f"Error creating authorization URL: {e}"
+        )
+
+@router.post("/login")
+async def login(user_login: UserLogin, db: Session = Depends(get_db)):
+    try:
+        user = await google_oauth_service.load_credentials(db, email=user_login.email)
+        return {
+            "message": "Authentication successful.",
+            "user_info": user
+        }
     except Exception as e:
         raise HTTPException(
             status_code=500, detail=f"Error creating authorization URL: {e}"

@@ -12,7 +12,6 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from src.gmail.gmail_client_api import GmailClient
 from src.api.v1.auth.controller import router as auth_router
 from src.api.v1.email.controller import router as email_router
 from src.database.database import Base, engine
@@ -45,7 +44,6 @@ async def startup_event():
 
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
 app.include_router(email_router, prefix="/email", tags=["email"])
-gmail_client = GmailClient()
 
 
 @app.get("/")
