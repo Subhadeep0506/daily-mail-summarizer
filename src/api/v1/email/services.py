@@ -1,19 +1,21 @@
-import os
 import base64
+import json
+import os
 import uuid
 from datetime import datetime
 from typing import List, Optional
-import json
-from sqlalchemy.orm import Session
+
 from fastapi import HTTPException
 from google.auth.transport.requests import Request as GoogleRequest
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from sqlalchemy.orm import Session
+
+from src.api.v1.auth.services import GoogleOAuth2Service
 from src.core.logger import SingletonLogger
 from src.database.database import SessionLocal
-from src.schema.user import UserToken, User
-from src.api.v1.auth.services import GoogleOAuth2Service
+from src.schema.user import User, UserToken
 
 SCOPES = [
     "https://www.googleapis.com/auth/gmail.readonly",
@@ -28,11 +30,11 @@ class GmailService:
         self.logger = SingletonLogger().logger
 
     async def read_emails_for_date(
-        self, email: str, start_date_str: str, end_date_str: str, db: Session
+        self, access_token: str, start_date_str: str, end_date_str: str, db: Session
     ):
         """Fetch emails within a date range."""
         try:
-            await self.auth.load_credentials(db, email)
+            _ = await self.auth.load_credentials(access_token, db)
             service = build("gmail", "v1", credentials=self.auth.creds)
             results = service.users().labels().list(userId="me").execute()
             labels = results.get("labels", [])

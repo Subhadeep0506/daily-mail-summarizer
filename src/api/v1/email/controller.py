@@ -34,13 +34,14 @@ def get_db():
 
 @router.get("/emails")
 async def get_emails(
+    access_token: str = Query(..., description="Access token for authentication"),
     start_date: str = Query(..., description="Start date in YYYY/MM/DD format"),
     end_date: str = Query(..., description="End date in YYYY/MM/DD format"),
     db: Session = Depends(get_db)
 ):
     """Fetch emails within a date range."""
     try:
-        emails = await gmail_client.read_emails_for_date(start_date, end_date, db)
+        emails = await gmail_client.read_emails_for_date(access_token, start_date, end_date, db)
         return emails
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error fetching emails: {e}")

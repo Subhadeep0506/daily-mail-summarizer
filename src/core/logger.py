@@ -1,5 +1,18 @@
+import os
+import sys
 import threading
+
+import requests
 from loguru import logger
+
+
+def remote_sink(message):
+    log_entry = message
+    try:
+        requests.post(os.getenv("LOG_URL"), data=str(log_entry))
+    except Exception as e:
+        # Optionally handle errors here
+        pass
 
 
 class SingletonLogger:
@@ -17,5 +30,7 @@ class SingletonLogger:
         return cls._instance
 
     def _initialize(self):
-        logger.add("app.log", rotation="10 MB")
+        logger.remove()
+        logger.add("app.log", rotation="10 MB", colorize=True)
+        logger.add(remote_sink)
         self.logger = logger
